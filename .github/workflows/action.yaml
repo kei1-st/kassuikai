@@ -35,3 +35,6 @@ jobs:
 
       - name: Lint
         run: yarn run lint
+        - if: ${{ failure() }}
+          run: yarn remove secretlint && yarn add secret lint --dev
+
