@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import Button from "./TabButton";
+import TabContent from "./TabContent";
 
 export default function Section() {
   const [clickedButton, setButtonClicked] = useState(0);
@@ -15,19 +16,22 @@ export default function Section() {
   const tabNames = ["にってい", "にゅーす", "しゃしん", "りんく集"];
 
   return (
-    <div className="flex">
-      {tabNames.map((name, idx) => (
-        <Button
-          key={idx}
-          id={idx}
-          clickHandler={() => {
-            clickHandler(idx);
-          }}
-          isClicked={clickedButton == idx}
-        >
-          {name}
-        </Button>
-      ))}
-    </div>
+    <section className="flex flex-col">
+      <div className="flex">
+        {tabNames.map((name, idx) => (
+          <Button
+            key={idx}
+            id={idx}
+            clickHandler={() => {
+              clickHandler(idx);
+            }}
+            isClicked={clickedButton == idx}
+          >
+            {name}
+          </Button>
+        ))}
+      </div>
+      <TabContent />
+    </section>
   );
 }
