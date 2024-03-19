@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import Button from "./Button";
+import Button from "./TabButton";
 
 export default function Section() {
   const [clickedButton, setButtonClicked] = useState(0);
