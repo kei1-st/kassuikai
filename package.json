@@ -10,6 +10,7 @@
     "lint:eslint": "next lint",
     "lint:prettier": "prettier --cache --check .",
     "lint:secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
+    "lint:tsc": "tsc",
     "fix": "run-s --continue-on-error fix:*",
     "fix:eslint": "next lint --fix",
     "fix:prettier": "prettier --cache --write ."
