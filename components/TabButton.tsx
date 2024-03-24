@@ -14,7 +14,7 @@ export default function Button({
 }) {
   return (
     <button
-      className={`w-20 h-10 rounded-t-lg text-sm ${isClicked ? "shadow-p bg-pushed" : "shadow-np"}`}
+      className={`w-full h-10 rounded-t-lg text-sm ${isClicked ? "shadow-p bg-pushed" : "shadow-np"}`}
       onClick={clickHandler}
     >
       {children}

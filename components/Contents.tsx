@@ -16,7 +16,7 @@ export default function Section() {
   const tabNames = ["にってい", "にゅーす", "しゃしん", "りんく集"];
 
   return (
-    <section className="flex flex-col">
+    <section className="flex flex-col w-full">
       <div className="flex">
         {tabNames.map((name, idx) => (
           <Button
