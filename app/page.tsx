@@ -1,6 +1,9 @@
+
 import Image from "next/image";
 
 import Contents from "../components/Contents";
+
+export const runtime = 'edge';
 
 export default function Home() {
   return (
