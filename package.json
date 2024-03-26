@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "on-cloudflare-pages": "npx @cloudflare/next-on-pages",
     "analyze": "ANALYZE=true next build",
     "start": "next start",
     "lint": "run-p --continue-on-error --print-label lint:*",
