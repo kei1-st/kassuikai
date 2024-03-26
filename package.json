@@ -22,6 +22,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@cloudflare/next-on-pages": "^1.11.0",
     "@next/bundle-analyzer": "^14.1.4",
     "@secretlint/secretlint-rule-preset-recommend": "8.1.2",
     "@types/node": "20.11.26",
