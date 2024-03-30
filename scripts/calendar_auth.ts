@@ -40,7 +40,7 @@ const getGoogleOAuth = async () => {
  * @param timeMin new Date().toISOString() etc...
  * @param timeMax new Date().toISOString() etc...
  */
-export const getEventListFromGoogleCalendar = async (timeMin: string, timeMax: string) => {
+export const getEventListFromGoogleCalendar = async (timeMin: string, timeMax: string, maxResults: number) => {
   try {
     // 認証
     const googleOAuth = await getGoogleOAuth();
@@ -51,6 +51,8 @@ export const getEventListFromGoogleCalendar = async (timeMin: string, timeMax: s
       calendarId,
       timeMin,
       timeMax,
+      maxResults,
+      singleEvents: true,
       timeZone: "Asia/Tokyo",
     });
 
