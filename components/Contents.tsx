@@ -1,11 +1,12 @@
 "use client";
 
+import { calendar_v3 } from "googleapis";
 import { useState } from "react";
 
 import Button from "./TabButton";
 import TabContent from "./TabContent";
 
-export default function Section() {
+export default function Contents({ events }: { events: calendar_v3.Schema$Event[] }) {
   const [clickedButton, setButtonClicked] = useState(0);
 
   function clickHandler(id: number) {
@@ -31,7 +32,7 @@ export default function Section() {
           </Button>
         ))}
       </div>
-      <TabContent />
+      <TabContent buttonId={clickedButton} events={events} />
     </section>
   );
 }
