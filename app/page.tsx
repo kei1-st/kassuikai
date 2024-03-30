@@ -19,7 +19,7 @@ async function fetchEvents() {
 
 export default function Home() {
   void fetchEvents(); // エラーハンドリングは定義側でやっているので未処理の Promises を void で明示的に無視する
-  return ( 
+  return (
     <main className="flex min-h-screen w-screen flex-col items-center p-10 space-y-10">
       <Image className="mt-10" src="/isuinu_logo.svg" alt="Isuinu Logo" width={200} height={200} />
       <Contents />
