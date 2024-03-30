@@ -6,7 +6,7 @@ import { useState } from "react";
 import Button from "./TabButton";
 import TabContent from "./TabContent";
 
-export default function Contents({ events }: { events: calendar_v3.Schema$Event[] }) {
+export default function Contents({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
   const [clickedButton, setButtonClicked] = useState(0);
 
   function clickHandler(id: number) {

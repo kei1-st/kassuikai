@@ -5,7 +5,7 @@ export default function TabContent({
   events,
 }: {
   buttonId: number;
-  events: calendar_v3.Schema$Event[] | null;
+  events: calendar_v3.Schema$Event[] | null | undefined;
 }) {
   let content;
   if (buttonId === 0) {
