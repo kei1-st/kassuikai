@@ -1,7 +1,18 @@
-export default function TabContent() {
-  return (
-    <div className="justify-center shadow-contents h-96 rounded-b-lg place-content-center">
-      <p className="text-center">Maybe coming soon.</p>
-    </div>
-  );
+import { calendar_v3 } from "googleapis";
+
+import ComingSoonTab from "./ComingSoonTab";
+import EventTab from "./EventTab";
+
+export default function TabContent({
+  buttonId,
+  events,
+}: {
+  buttonId: number;
+  events: calendar_v3.Schema$Event[] | null | undefined;
+}) {
+  if (buttonId === 0) {
+    return <EventTab events={events} />;
+  } else {
+    return <ComingSoonTab />;
+  }
 }

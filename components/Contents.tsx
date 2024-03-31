@@ -1,11 +1,12 @@
 "use client";
 
+import { calendar_v3 } from "googleapis";
 import { useState } from "react";
 
-import Button from "./TabButton";
+import TabButton from "./TabButton";
 import TabContent from "./TabContent";
 
-export default function Section() {
+export default function Contents({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
   const [clickedButton, setButtonClicked] = useState(0);
 
   function clickHandler(id: number) {
@@ -19,7 +20,7 @@ export default function Section() {
     <section className="flex flex-col w-full">
       <div className="flex">
         {tabNames.map((name, idx) => (
-          <Button
+          <TabButton
             key={idx}
             id={idx}
             clickHandler={() => {
@@ -28,10 +29,10 @@ export default function Section() {
             isClicked={clickedButton == idx}
           >
             {name}
-          </Button>
+          </TabButton>
         ))}
       </div>
-      <TabContent />
+      <TabContent buttonId={clickedButton} events={events} />
     </section>
   );
 }
