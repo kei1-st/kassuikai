@@ -1,3 +1,24 @@
+function conv2DOW(num: number){
+  switch(num) {
+    case 0:
+      return '月';
+    case 1:
+      return '火';
+    case 2:
+      return '水';
+    case 3:
+      return '木';
+    case 4:
+      return '金';
+    case 5:
+      return '土';
+    case 6:
+      return '日';
+    default:
+      return '';
+  }
+}
+
 export function format_event_date(start_date: string | null | undefined, end_date: string | null | undefined): string {
   if (!start_date) {
     return "";
@@ -6,28 +27,28 @@ export function format_event_date(start_date: string | null | undefined, end_dat
   const sd = new Date(start_date);
   const month = sd.getMonth() + 1; // 月は0始まりなので1を加算
   const day = sd.getDate();
-  const start_hour = sd.getHours();
-  const start_min = sd.getMinutes();
+  const dayOfWeek = sd.getDay();
+  const startHour = sd.getHours();
+  const startMin = sd.getMinutes();
 
-  var formatted = `${month}月${day}日 ${start_hour}時 〜`;
+  const formattedMonth = month.toString().padStart(2, ' ');
+  const formattedDay = day.toString().padStart(2, ' ');
+  const formattedDOW = conv2DOW(dayOfWeek)
+  const formattedStartHour = startHour.toString().padStart(2, ' ');
+
+  var formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - `;
 
   if (!end_date) {
     return formatted + `（終了時刻未定）`;
   }
 
   const ed = new Date(end_date);
-  const end_hour = ed.getHours();
-  const end_min = ed.getMinutes();
+  const endHour = ed.getHours();
+  const endMin = ed.getMinutes();
 
-  formatted = `${month}月${day}日 ${start_hour}時 - ${end_hour}時`;
+  const formattedEndHour = endHour.toString().padStart(2, ' ');
 
-  // // 月と日を2桁に変換
-  // const formattedMonth = month < 10 ? "0" + month : month.toString();
-  // const formattedDay = day < 10 ? "0" + day : day.toString();
-
-  // // 時間を0埋め
-  // const formattedHour = hour < 10 ? "0" + hour : hour.toString();
-  // const formattedMinute = minute < 10 ? "0" + minute : minute.toString();
+  formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - ${formattedEndHour}時`;
 
   // フォーマットされた日付文字列を返す
   return formatted;

@@ -14,7 +14,7 @@ export default function TabContent({
     content =
       events &&
       events.map((event) => (
-        <div className="mx-5 my-2 text-center" key={event.id}>
+        <div className="mx-5 my-2" key={event.id} style={{ fontFamily: 'Roboto', fontSize: '14px' }}>
           {format_event_date(event.start?.dateTime, event.end?.dateTime)} &nbsp; {event.summary}
         </div>
       ));
