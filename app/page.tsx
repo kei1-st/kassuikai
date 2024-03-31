@@ -1,10 +1,9 @@
 import Image from "next/image";
 
 import { fetchEvents } from "@/scripts/calendar_auth";
+import { notojp } from "@/utils/fonts";
 
 import Contents from "../components/Contents";
-
-import { notojp } from "@/utils/fonts";
 
 export default async function Home() {
   const eventData = await fetchEvents(); // エラーハンドリングは定義側でやっているので未処理の Promises を void で明示的に無視する
