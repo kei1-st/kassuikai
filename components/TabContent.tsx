@@ -1,5 +1,7 @@
 import { calendar_v3 } from "googleapis";
 
+import { format_event_date } from "@/scripts/format_date";
+
 export default function TabContent({
   buttonId,
   events,
@@ -12,9 +14,8 @@ export default function TabContent({
     content =
       events &&
       events.map((event) => (
-        <div key={event.id}>
-          {event.start?.dateTime}
-          {event.summary}
+        <div className="mx-5 my-2 text-center" key={event.id}>
+          {format_event_date(event.start?.dateTime, event.end?.dateTime)} &nbsp; {event.summary}
         </div>
       ));
   } else {
