@@ -1,6 +1,6 @@
 import { calendar_v3 } from "googleapis";
 
-import { format_event_date } from "@/scripts/format_date";
+import Event from "./Event";
 
 export default function TabContent({
   buttonId,
@@ -11,13 +11,7 @@ export default function TabContent({
 }) {
   let content;
   if (buttonId === 0) {
-    content =
-      events &&
-      events.map((event) => (
-        <div className="mx-5 my-2" key={event.id} style={{ fontFamily: 'Roboto', fontSize: '14px' }}>
-          {format_event_date(event.start?.dateTime, event.end?.dateTime)} &nbsp; {event.summary}
-        </div>
-      ));
+    content = events && events.map((event) => <Event key={event.id} event={event} />);
   } else {
     content = <p className="text-center">Maybe coming soon.</p>;
   }
