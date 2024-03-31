@@ -1,21 +1,21 @@
-function conv2DOW(num: number){
-  switch(num) {
+function conv2DOW(num: number) {
+  switch (num) {
     case 0:
-      return '月';
+      return "月";
     case 1:
-      return '火';
+      return "火";
     case 2:
-      return '水';
+      return "水";
     case 3:
-      return '木';
+      return "木";
     case 4:
-      return '金';
+      return "金";
     case 5:
-      return '土';
+      return "土";
     case 6:
-      return '日';
+      return "日";
     default:
-      return '';
+      return "";
   }
 }
 
@@ -31,10 +31,10 @@ export function format_event_date(start_date: string | null | undefined, end_dat
   const startHour = sd.getHours();
   const startMin = sd.getMinutes();
 
-  const formattedMonth = month.toString().padStart(2, ' ');
-  const formattedDay = day.toString().padStart(2, ' ');
-  const formattedDOW = conv2DOW(dayOfWeek)
-  const formattedStartHour = startHour.toString().padStart(2, ' ');
+  const formattedMonth = month.toString().padStart(2, " ");
+  const formattedDay = day.toString().padStart(2, " ");
+  const formattedDOW = conv2DOW(dayOfWeek);
+  const formattedStartHour = startHour.toString().padStart(2, " ");
 
   var formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - `;
 
@@ -46,7 +46,7 @@ export function format_event_date(start_date: string | null | undefined, end_dat
   const endHour = ed.getHours();
   const endMin = ed.getMinutes();
 
-  const formattedEndHour = endHour.toString().padStart(2, ' ');
+  const formattedEndHour = endHour.toString().padStart(2, " ");
 
   formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - ${formattedEndHour}時`;
 
