@@ -64,8 +64,6 @@ export const getEventListFromGoogleCalendar = async (
       timeZone: "Asia/Tokyo",
     });
 
-    console.log("calendar list : " + calendar.calendarList);
-
     if (!res.data.items) throw new Error("couldn't fetch events.");
 
     return res.data.items;
@@ -92,7 +90,7 @@ export async function fetchEvents() {
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarShinkanId)) || [];
     const lessonEvent: calendar_v3.Schema$Event[] =
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarLessonId)) || [];
-    const events = [...shinkanEvent, ...lessonEvent];
+    const events = [...shinkanEvent.slice(0, 5), ...lessonEvent.slice(0, 5)];
     sortEvents(events);
     console.log(events);
     return events;
