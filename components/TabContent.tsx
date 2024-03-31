@@ -11,7 +11,11 @@ export default function TabContent({
 }) {
   let content;
   if (buttonId === 0) {
-    content = events && events.map((event) => <Event key={event.id} event={event} />);
+    if(events){
+      content = events.map((event) => <Event key={String(event.id)} event={event} />);
+    } else {
+      content = <p className="text-center">No events upcoming.</p>;
+    }
   } else {
     content = <p className="text-center">Maybe coming soon.</p>;
   }
