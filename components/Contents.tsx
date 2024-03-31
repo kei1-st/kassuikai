@@ -3,7 +3,7 @@
 import { calendar_v3 } from "googleapis";
 import { useState } from "react";
 
-import Button from "./TabButton";
+import TabButton from "./TabButton";
 import TabContent from "./TabContent";
 
 export default function Contents({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
@@ -20,7 +20,7 @@ export default function Contents({ events }: { events: calendar_v3.Schema$Event[
     <section className="flex flex-col w-full">
       <div className="flex">
         {tabNames.map((name, idx) => (
-          <Button
+          <TabButton
             key={idx}
             id={idx}
             clickHandler={() => {
@@ -29,7 +29,7 @@ export default function Contents({ events }: { events: calendar_v3.Schema$Event[
             isClicked={clickedButton == idx}
           >
             {name}
-          </Button>
+          </TabButton>
         ))}
       </div>
       <TabContent buttonId={clickedButton} events={events} />

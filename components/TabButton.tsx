@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 
-export default function Button({
+export default function TabButton({
   children,
   clickHandler,
   isClicked,
