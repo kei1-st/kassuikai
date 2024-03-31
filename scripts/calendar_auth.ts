@@ -53,7 +53,7 @@ export const getEventListFromGoogleCalendar = async (timeMin: string, timeMax: s
       timeMax,
       maxResults,
       singleEvents: true,
-      orderBy: 'startTime',
+      orderBy: "startTime",
       timeZone: "Asia/Tokyo",
     });
 
