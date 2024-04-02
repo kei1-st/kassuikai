@@ -14,7 +14,13 @@ export default function LinkGroup({
       <h1 className="mb-6 text-center text-[min(3vw,20px)]">{linkDicts.title}</h1>
       <span className="text-center space-y-3 flex flex-col">
         {linkDicts.links.map((link) => (
-          <a href={link.url} key={link.url} className="px-3 py-2 rounded-lg shadow-np">
+          <a
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={link.url}
+            className="px-3 py-2 rounded-lg shadow-np"
+          >
             {link.category}
           </a>
         ))}
