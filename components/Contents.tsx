@@ -3,8 +3,8 @@
 import { calendar_v3 } from "googleapis";
 import { useState } from "react";
 
-import TabButton from "./TabButton";
-import TabContent from "./TabContent";
+import TabButton from "./TabContents/TabButton";
+import TabContent from "./TabContents/TabContent";
 
 export default function Contents({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
   const [clickedButton, setButtonClicked] = useState(0);
