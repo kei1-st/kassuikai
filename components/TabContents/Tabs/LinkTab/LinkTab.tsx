@@ -1,7 +1,4 @@
-import Link from "next/link";
-
 import LinkGroup from "./LinkGroup";
-
 import linksOfClubs from "./links";
 
 export default function LinkTab() {
