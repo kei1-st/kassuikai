@@ -90,7 +90,7 @@ export async function fetchEvents() {
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarShinkanId)) || [];
     const lessonEvent: calendar_v3.Schema$Event[] =
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarLessonId)) || [];
-    const events = [...shinkanEvent.slice(0, 4), ...lessonEvent.slice(0, 5)];
+    const events = [...shinkanEvent.slice(0, 5), ...lessonEvent.slice(0, 5)];
     // sortEvents(events);
     console.log(events);
     return events;
