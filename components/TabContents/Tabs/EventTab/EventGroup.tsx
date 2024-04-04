@@ -7,7 +7,17 @@ export default function EventGroup({ title, events }: { title: string; events: c
     <>
       <h1 className="mx-5"> 直近の{title} </h1>
       {events.map((event) => {
-        return event.id && event.organizer?.displayName === title && <EventInfo key={event.id} event={event} />;
+        return (
+          event.id &&
+          event.organizer?.displayName === title && (
+            <EventInfo
+              key={event.id}
+              event={event}
+              showEndTime={title === "練習日程"}
+              showMapLink={title === "新歓日程"}
+            />
+          )
+        );
       })}
     </>
   );

@@ -19,7 +19,11 @@ function conv2DOW(num: number) {
   }
 }
 
-export function format_event_date(start_date: string | null | undefined, end_date: string | null | undefined): string {
+export function format_event_date(
+  start_date: string | null | undefined,
+  end_date: string | null | undefined,
+  showEndTime: boolean,
+): string {
   if (!start_date) {
     return "";
   }
@@ -38,8 +42,8 @@ export function format_event_date(start_date: string | null | undefined, end_dat
 
   var formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - `;
 
-  if (!end_date) {
-    return formatted + `（終了時刻未定）`;
+  if (!end_date || !showEndTime) {
+    return formatted;
   }
 
   const ed = new Date(end_date);
