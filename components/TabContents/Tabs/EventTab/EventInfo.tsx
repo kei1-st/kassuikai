@@ -15,7 +15,7 @@ export default function EventInfo({
 }) {
   return (
     <div className={`ml-5 my-2 flex`}>
-      <p className="mr-2">
+      <p className="mr-2 md:mr-8">
         {format_event_date(event.start?.dateTime, event.end?.dateTime, showEndTime)} &nbsp; {event.summary}
       </p>
       {showMapLink && event.location && (
