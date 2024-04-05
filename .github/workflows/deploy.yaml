@@ -13,7 +13,7 @@ jobs:
         with:
           show-progress: false
           submodules: recursive
-    
+
       - name: Audit Dependency
         run: yarn audit --audit-level moderate
 
@@ -28,6 +28,13 @@ jobs:
 
       - name: Build
         run: yarn run build
+        env:
+          CALENDAR_LESSON_ID: ${{ secrets.CALENDAR_LESSON_ID }}
+          CALENDAR_SHINKAN_ID: ${{ CALENDAR_SHINKAN_ID }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          TZ: ${{ secrets.TZ }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
