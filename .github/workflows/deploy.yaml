@@ -27,7 +27,7 @@ jobs:
         run: yarn install --frozen-lockfile --prefer-offline
 
       - name: Build
-        run: yarn run build
+        run: npx @cloudflare/next-on-pages@1
         env:
           CALENDAR_LESSON_ID: ${{ secrets.CALENDAR_LESSON_ID }}
           CALENDAR_SHINKAN_ID: ${{ secrets.CALENDAR_SHINKAN_ID }}
@@ -42,5 +42,5 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
-          directory: .next
+          directory: .vercel/output/static
           gitHubToken: ${{ secrets.DEPLOYMENT_TOKEN }}
