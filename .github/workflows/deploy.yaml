@@ -6,6 +6,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: auth-gcal
     steps:
       - name: Checkout the source
         uses: actions/checkout@v4
