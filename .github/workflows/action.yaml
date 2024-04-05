@@ -37,3 +37,12 @@ jobs:
 
       - name: Lint
         run: yarn run lint
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
