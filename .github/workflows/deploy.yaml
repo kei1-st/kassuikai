@@ -7,6 +7,12 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout the source
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+          submodules: recursive
+    
       - name: Audit Dependency
         run: yarn audit --audit-level moderate
 
