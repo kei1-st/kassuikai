@@ -7,13 +7,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Audit Dependency
+        run: yarn audit --audit-level moderate
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "21.7.1"
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+
       - name: Build
-        run: npm install && npm run build
+        run: yarn run build
+
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           projectName: ${{ secrets.CLOUDFLARE_PROJECT_NAME }}
-          directory: dist
+          directory: .vercel/output/static
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
