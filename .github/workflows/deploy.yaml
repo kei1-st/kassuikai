@@ -13,7 +13,7 @@ jobs:
         with:
           show-progress: false
           submodules: recursive
-    
+
       - name: Audit Dependency
         run: yarn audit --audit-level moderate
 
