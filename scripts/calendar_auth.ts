@@ -92,7 +92,6 @@ export async function fetchEvents() {
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarLessonId)) || [];
     const events = [...shinkanEvent.slice(0, 5), ...lessonEvent.slice(0, 5)];
     // sortEvents(events);
-    console.log(events);
     return events;
   } catch (error) {
     console.error("error occured while fetching events. Error details: ", error);
