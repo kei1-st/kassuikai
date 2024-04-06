@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
 
-      - name: Build
+      - name: Next Build
         run: yarn run build
+
+      - name: cloudflare Build
+        run: npx @cloudflare/next-on-pages@1
 
       - name: Lint
         run: yarn run lint
