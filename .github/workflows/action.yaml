@@ -35,6 +35,13 @@ jobs:
 
       - name: cloudflare Build
         run: npx @cloudflare/next-on-pages@1
+        env:
+          CALENDAR_LESSON_ID: ${{ secrets.CALENDAR_LESSON_ID }}
+          CALENDAR_SHINKAN_ID: ${{ secrets.CALENDAR_SHINKAN_ID }}
+          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
+          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
+          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
+          TZ: ${{ secrets.TZ }}
 
       - name: Lint
         run: yarn run lint
