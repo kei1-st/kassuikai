@@ -2,7 +2,7 @@ name: deploy on cloudflare pages
 on:
   workflow_dispatch:
   schedule:
-    - cron: "1,7,13 * * *" #10時,16時,22時(JST=UTC+9)に実行
+    - cron: "0 1,7,13 * * *" #10時,16時,22時(JST=UTC+9)に実行
 jobs:
   deploy:
     runs-on: ubuntu-latest
