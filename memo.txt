@@ -1,0 +1,26 @@
+https://accounts.google.com/o/oauth2/auth?
+client_id=547289988008-rkd3lj09dtha1gsdg0kubl4jbdt1qc03.apps.googleusercontent.com
+&redirect_uri=http://localhost
+&scope=https://www.googleapis.com/auth/calendar.readonly
+&access_type=offline
+&response_type=code
+
+http://localhost/?code=4/0AeaYSHDMk2qMBCwpAMcdBwBl8PD9p54pksWHGw_N9rFhX1faCEqhBoIE3k9rHnorrWXYzg&scope=https://www.googleapis.com/auth/calendar.readonly
+
+4/0AeaYSHDMk2qMBCwpAMcdBwBl8PD9p54pksWHGw_N9rFhX1faCEqhBoIE3k9rHnorrWXYzg
+
+curl \
+-d code=4/0AeaYSHDMk2qMBCwpAMcdBwBl8PD9p54pksWHGw_N9rFhX1faCEqhBoIE3k9rHnorrWXYzg \
+-d client_id=547289988008-rkd3lj09dtha1gsdg0kubl4jbdt1qc03.apps.googleusercontent.com \
+-d client_secret=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 \
+-dredirect_uri=http://localhost \
+-d grant_type=authorization_code \
+https://accounts.google.com/o/oauth2/token
+
+{
+  "access_token": "ya29.a0Ad52N384GsfVy4l7xSkqxtvFad9z7dH2FtLXbot6CqLs9gIWg4zt5hIVkqi-74dCU4Z4zie_0oFW-22atTSjCwhK09Hys4ffSeTUCAwPfyPlMjGGFcTjmHAyFtVby9b-eL_8BC5I5UEKWlNH8frp-Mb1w1-hXSXFxL1yaCgYKAXkSARISFQHGX2MieE5-0Ymv6t3OLq4RYaxwLw0171",
+  "expires_in": 3599,
+  "refresh_token": "1//0eX-eDl7K2lIbCgYIARAAGA4SNwF-L9IrVxRQI-3MfM_f12q2cS1tSSyk6NqQD1rprm1Hze3WGd4Q3jmoAdZp27cIDloxb84BI6w",
+  "scope": "https://www.googleapis.com/auth/calendar.readonly",
+  "token_type": "Bearer"
+}%      

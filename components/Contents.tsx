@@ -14,7 +14,7 @@ export default function Contents({ events }: { events: calendar_v3.Schema$Event[
     console.log("clickedButton: ", clickedButton);
   }
 
-  const tabNames = ["にってい", "にゅーす", "しゃしん", "りんく集"];
+  const tabNames = ["にってい", "にゅーす", "Q & A", "りんく集"];
 
   return (
     <section className="flex flex-col w-full">
