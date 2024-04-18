@@ -1,5 +1,6 @@
 # kassuikai
 
+- https://kassuikai.jp
 - 筑波大学医学水泳部のホームページです
 - Nextjs で構築されています
 - Cloudflare Pages　にデプロイしています
