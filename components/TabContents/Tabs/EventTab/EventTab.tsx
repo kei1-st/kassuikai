@@ -2,11 +2,12 @@ import { calendar_v3 } from "googleapis";
 
 import EventGroup from "./EventGroup";
 
-let isDisplayShinkanEvents = 0; // 新歓情報を非表示にするときはここを １ にする
+const DISPLAY_SHINKAN_EVENTS = 0; // 新歓情報を非表示にするときはここを １ にする
 
 export default function EventTab({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
   if (events) {
-    if (isDisplayShinkanEvents) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+    if (DISPLAY_SHINKAN_EVENTS) {
       return (
         <div className="flex flex-wrap justify-center shadow-contents h-3vh pb-10 rounded-b-lg place-content-center text-[min(3vw,15px)] px-3 py-10 font-light space-y-5 md:space-y-0">
           <div className="w-full md:w-1/2 md:px-8">
