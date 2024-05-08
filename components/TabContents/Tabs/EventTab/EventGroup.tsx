@@ -5,7 +5,7 @@ import MapLink from "./MapLink";
 
 export default function EventGroup({ title, events }: { title: string; events: calendar_v3.Schema$Event[] }) {
   return (
-    <>
+    <div className="flex flex-col">
       <div className="flex">
         <h1 className="mx-5"> 直近の{title} </h1>
         {title == "練習日程" && <MapLink placeName="屋内プール,筑波大学屋内プール" />}
@@ -23,6 +23,6 @@ export default function EventGroup({ title, events }: { title: string; events: c
           )
         );
       })}
-    </>
+    </div>
   );
 }
