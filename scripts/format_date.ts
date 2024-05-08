@@ -39,8 +39,9 @@ export function format_event_date(
   const formattedDay = day.toString().padStart(2, " ");
   const formattedDOW = conv2DOW(dayOfWeek);
   const formattedStartHour = startHour.toString().padStart(2, " ");
+  const formattedStartMin = startMin.toString().padStart(2, "0");
 
-  var formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - `;
+  var formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}:${formattedStartMin} - `;
 
   if (!end_date || !showEndTime) {
     return formatted;
@@ -51,8 +52,9 @@ export function format_event_date(
   const endMin = ed.getMinutes();
 
   const formattedEndHour = endHour.toString().padStart(2, " ");
+  const formattedEndMin = endMin.toString().padStart(2, "0");
 
-  formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}時 - ${formattedEndHour}時`;
+  formatted = `${formattedMonth}月${formattedDay}日（${formattedDOW}） ${formattedStartHour}:${formattedStartMin} - ${formattedEndHour}:${formattedEndMin}`;
 
   // フォーマットされた日付文字列を返す
   return formatted;
