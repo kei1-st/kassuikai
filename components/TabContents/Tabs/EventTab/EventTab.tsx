@@ -2,7 +2,7 @@ import { calendar_v3 } from "googleapis";
 
 import EventGroup from "./EventGroup";
 
-let isDisplayShinkanEvents = 1; // 新歓情報を非表示にするときはここを １ にする
+let isDisplayShinkanEvents = 0; // 新歓情報を非表示にするときはここを １ にする
 
 export default function EventTab({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
   if (events) {
