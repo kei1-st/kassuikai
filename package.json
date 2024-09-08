@@ -47,7 +47,8 @@
   "resolutions": {
     "string-width": "4.2.3",
     "braces": "^3.0.3",
-    "ws": "^8.17.1"
+    "ws": "^8.17.1",
+    "micromatch": "^4.0.8"
   },
   "engines": {
     "npm": "npm ではなく yarn を使ってください"
