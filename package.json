@@ -16,7 +16,7 @@
     "fix:prettier": "prettier --cache --write ."
   },
   "dependencies": {
-    "next": "^14.2.15",
+    "next": "^14.2.21",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -45,7 +45,6 @@
     "yarn-run-all": "3.1.1"
   },
   "resolutions": {
-    "string-width": "4.2.3",
     "braces": "^3.0.3",
     "ws": "^8.17.1",
     "micromatch": "^4.0.8",
