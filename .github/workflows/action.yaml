@@ -18,7 +18,7 @@ jobs:
           show-progress: false
           submodules: recursive
 
-      - name: Audit Dependency
+      - name: Audit Production Dependency
         run: yarn audit --audit-level moderate --groups dependencies --groups resolutions
 
       - name: Setup Node.js
