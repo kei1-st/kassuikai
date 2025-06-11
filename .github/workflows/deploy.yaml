@@ -14,8 +14,9 @@ jobs:
           show-progress: false
           submodules: recursive
 
-      - name: Audit Dependency
-        run: yarn audit --audit-level moderate
+      - name: Audit Production Dependency
+        # devDependencies は brace 関連のパッチが当てられるまで無視する
+        run: yarn audit --audit-level moderate --groups dependencies --groups resolutions
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
