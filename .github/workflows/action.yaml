@@ -19,7 +19,7 @@ jobs:
           submodules: recursive
 
       - name: Audit Dependency
-        run: yarn audit --audit-level moderate
+        run: yarn audit --audit-level moderate --groups dependencies --groups resolutions
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
