@@ -1,0 +1,8 @@
+name = "kassuikai"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Cloudflare Pages のビルド成果物の場所（next-on-pages が出力するディレクトリ）
+pages_build_output_dir = ".vercel/output/static"
+
+
