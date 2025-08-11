@@ -18,26 +18,20 @@ type Secrets = {
 };
 
 function readSecrets(): Secrets {
-  // Cloudflare Pages (Edge Runtime)
+  let cfEnv: Record<string, string | undefined> = {};
   try {
     const { env } = getRequestContext();
-    return {
-      clientId: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_CLIENT_ID"],
-      clientSecret: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_CLIENT_SECRET"],
-      refreshToken: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_REFRESH_TOKEN"],
-      calendarShinkanId: (env as Record<string, string | undefined>)["CALENDAR_SHINKAN_ID"],
-      calendarLessonId: (env as Record<string, string | undefined>)["CALENDAR_LESSON_ID"],
-    };
+    cfEnv = env as Record<string, string | undefined>;
   } catch {
-    // ローカル開発 (Node.js)
-    return {
-      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
-      refreshToken: process.env.GOOGLE_OAUTH_REFRESH_TOKEN,
-      calendarShinkanId: process.env.CALENDAR_SHINKAN_ID,
-      calendarLessonId: process.env.CALENDAR_LESSON_ID,
-    };
+    // getRequestContext が無い環境はそのまま process.env を使う
   }
+  return {
+    clientId: cfEnv["GOOGLE_OAUTH_CLIENT_ID"] ?? process.env.GOOGLE_OAUTH_CLIENT_ID,
+    clientSecret: cfEnv["GOOGLE_OAUTH_CLIENT_SECRET"] ?? process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+    refreshToken: cfEnv["GOOGLE_OAUTH_REFRESH_TOKEN"] ?? process.env.GOOGLE_OAUTH_REFRESH_TOKEN,
+    calendarShinkanId: cfEnv["CALENDAR_SHINKAN_ID"] ?? process.env.CALENDAR_SHINKAN_ID,
+    calendarLessonId: cfEnv["CALENDAR_LESSON_ID"] ?? process.env.CALENDAR_LESSON_ID,
+  };
 }
 
 async function getAccessToken({ clientId, clientSecret, refreshToken }: Secrets): Promise<string> {
