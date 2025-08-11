@@ -1,9 +1,9 @@
-import { calendar_v3 } from "googleapis";
+import type { CalendarEvent } from "@/scripts/calendar_auth";
 
 import EventInfo from "./EventInfo";
 import MapLink from "./MapLink";
 
-export default function EventGroup({ title, events }: { title: string; events: calendar_v3.Schema$Event[] }) {
+export default function EventGroup({ title, events }: { title: string; events: CalendarEvent[] }) {
   return (
     <div className="flex flex-col">
       <div className="flex">

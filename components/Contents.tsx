@@ -1,12 +1,13 @@
 "use client";
 
-import { calendar_v3 } from "googleapis";
 import { useState } from "react";
+
+import type { CalendarEvent } from "@/scripts/calendar_auth";
 
 import TabButton from "./TabContents/TabButton";
 import TabContent from "./TabContents/TabContent";
 
-export default function Contents({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
+export default function Contents({ events }: { events: CalendarEvent[] | null | undefined }) {
   const [clickedButton, setButtonClicked] = useState(0);
 
   function clickHandler(id: number) {

@@ -1,10 +1,10 @@
-import { calendar_v3 } from "googleapis";
+import type { CalendarEvent } from "@/scripts/calendar_auth";
 
 import EventGroup from "./EventGroup";
 
 const DISPLAY_SHINKAN_EVENTS = 0; // 新歓情報を非表示にするときはここを １ にする
 
-export default function EventTab({ events }: { events: calendar_v3.Schema$Event[] | null | undefined }) {
+export default function EventTab({ events }: { events: CalendarEvent[] | null | undefined }) {
   if (events) {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     if (DISPLAY_SHINKAN_EVENTS) {

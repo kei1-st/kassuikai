@@ -1,5 +1,4 @@
-import { calendar_v3 } from "googleapis";
-
+import type { CalendarEvent } from "@/scripts/calendar_auth";
 import { format_event_date } from "@/scripts/format_date";
 
 import MapLink from "./MapLink";
@@ -9,7 +8,7 @@ export default function EventInfo({
   showEndTime,
   showMapLink,
 }: {
-  event: calendar_v3.Schema$Event;
+  event: CalendarEvent;
   showEndTime: boolean;
   showMapLink: boolean;
 }) {
