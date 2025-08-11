@@ -1,3 +1,5 @@
+import { getRequestContext } from "@cloudflare/next-on-pages";
+
 export type CalendarEvent = {
   id?: string;
   summary?: string;
@@ -7,14 +9,38 @@ export type CalendarEvent = {
   location?: string;
 };
 
-// 環境変数から認証情報を取得
-const clientId = process.env.GOOGLE_OAUTH_CLIENT_ID;
-const clientSecret = process.env.GOOGLE_OAUTH_CLIENT_SECRET;
-const refreshToken = process.env.GOOGLE_OAUTH_REFRESH_TOKEN;
-const calendarShinkanId = process.env.CALENDAR_SHINKAN_ID;
-const calendarLessonId = process.env.CALENDAR_LESSON_ID;
+type Secrets = {
+  clientId?: string;
+  clientSecret?: string;
+  refreshToken?: string;
+  calendarShinkanId?: string;
+  calendarLessonId?: string;
+};
 
-async function getAccessToken(): Promise<string> {
+function readSecrets(): Secrets {
+  // Cloudflare Pages (Edge Runtime)
+  try {
+    const { env } = getRequestContext();
+    return {
+      clientId: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_CLIENT_ID"],
+      clientSecret: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_CLIENT_SECRET"],
+      refreshToken: (env as Record<string, string | undefined>)["GOOGLE_OAUTH_REFRESH_TOKEN"],
+      calendarShinkanId: (env as Record<string, string | undefined>)["CALENDAR_SHINKAN_ID"],
+      calendarLessonId: (env as Record<string, string | undefined>)["CALENDAR_LESSON_ID"],
+    };
+  } catch {
+    // ローカル開発 (Node.js)
+    return {
+      clientId: process.env.GOOGLE_OAUTH_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.GOOGLE_OAUTH_REFRESH_TOKEN,
+      calendarShinkanId: process.env.CALENDAR_SHINKAN_ID,
+      calendarLessonId: process.env.CALENDAR_LESSON_ID,
+    };
+  }
+}
+
+async function getAccessToken({ clientId, clientSecret, refreshToken }: Secrets): Promise<string> {
   if (!clientId || !clientSecret || !refreshToken) {
     throw new Error("Google OAuth env vars are missing");
   }
@@ -53,7 +79,7 @@ export const getEventListFromGoogleCalendar = async (
 ): Promise<CalendarEvent[] | undefined> => {
   try {
     if (!calendarId) throw new Error("calendarId is missing");
-    const accessToken = await getAccessToken();
+    const accessToken = await getAccessToken(readSecrets());
 
     const url = new URL(`https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(calendarId)}/events`);
     url.searchParams.set("timeMin", timeMin);
@@ -94,6 +120,7 @@ export async function fetchEvents() {
   const timeMax = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();
 
   try {
+    const { calendarShinkanId, calendarLessonId } = readSecrets();
     const shinkanEvent: CalendarEvent[] =
       (await getEventListFromGoogleCalendar(timeMin, timeMax, 10, calendarShinkanId)) || [];
     const lessonEvent: CalendarEvent[] =
