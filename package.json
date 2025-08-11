@@ -60,5 +60,6 @@
   },
   "engines": {
     "npm": "npm ではなく yarn を使ってください"
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
