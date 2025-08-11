@@ -22,8 +22,9 @@ function readSecrets(): Secrets {
   try {
     const { env } = getRequestContext();
     cfEnv = env as Record<string, string | undefined>;
-  } catch {
+  } catch (err) {
     // getRequestContext が無い環境はそのまま process.env を使う
+    console.warn("getRequestContext() failed, falling back to process.env", err);
   }
   return {
     clientId: cfEnv["GOOGLE_OAUTH_CLIENT_ID"] ?? process.env.GOOGLE_OAUTH_CLIENT_ID,
@@ -96,7 +97,7 @@ export const getEventListFromGoogleCalendar = async (
     if (!data.items) throw new Error("couldn't fetch events.");
     return data.items;
   } catch (err) {
-    console.log("error occured while fetching events from the calendar", err);
+    console.log("error occurred while fetching events from the calendar", err);
   }
 };
 
