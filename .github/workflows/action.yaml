@@ -19,7 +19,8 @@ jobs:
           submodules: recursive
 
       - name: Audit Production Dependency
-        run: yarn audit --audit-level moderate --groups dependencies --groups resolutions
+        # Yarn v1 audit does not support --groups resolutions; restrict to prod deps
+        run: yarn audit --audit-level moderate --groups dependencies
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
