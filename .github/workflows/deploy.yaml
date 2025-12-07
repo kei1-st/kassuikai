@@ -15,8 +15,8 @@ jobs:
           submodules: recursive
 
       - name: Audit Production Dependency
-        # devDependencies は brace 関連のパッチが当てられるまで無視する
-        run: yarn audit --audit-level moderate --groups dependencies --groups resolutions
+        # Yarn v1 audit does not support --groups resolutions; restrict to prod deps
+        run: yarn audit --audit-level moderate --groups dependencies
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
